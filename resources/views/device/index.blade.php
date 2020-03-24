@@ -1,0 +1,1 @@
+@include('device/index/search')
