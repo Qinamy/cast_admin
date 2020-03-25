@@ -17,6 +17,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::any('device/indexview', 'DeviceController@indexview')->middleware(['web']);
 Route::any('device/index', 'DeviceController@index')->middleware(['web']);
 
 

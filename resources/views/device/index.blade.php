@@ -1,1 +1,4 @@
-@include('device/index/search')
+@include('header')
+@include('device.index.script')
+@include('device.index.search')
+@include('bottom')
