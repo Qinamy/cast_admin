@@ -10,3 +10,9 @@ Homestead.json
 Homestead.yaml
 npm-debug.log
 yarn-error.log
+/.idea
+app/Http/Controllers/Service/MqttService.php
+app/Logger.php
+app/Store.php
+device.php
+manage.php

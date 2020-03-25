@@ -16,8 +16,8 @@
         $scope.filter = {
             page: 1,
             date_range: 1,
-            email: null,
-            filter_created_start: null,
+            mobile: null,
+            dev_id: null,
             filter_created_end: null,
         };
 
@@ -46,7 +46,7 @@
 
             $scope.isLoading = true;
 
-            $network.post('./index', $scope.filter, function (data) {
+            $network.post('../index/json', $scope.filter, function (data) {
                 console.log(data);
                 $scope.isLoading = false;
                 if (data.code == 200) {

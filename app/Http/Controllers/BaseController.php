@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
+
 define('GLOBAL_TYPE_HTML', 'html');
 define('GLOBAL_TYPE_JSON', 'json');
 define('GLOBAL_TYPE_JSONP', 'jsonp');
@@ -128,4 +130,24 @@ class BaseController extends Controller
         }
     }
 
+    public function index(Request $request, $address, $type)
+    {
+
+        $this->setRequestValue($request);
+
+        $this->setCode(200);
+        $this->setMsg('ok');
+
+        $this->setResponseType($type);
+
+        $this->goPage($address);
+
+        $response_array = array(
+            GLOBAL_RESPONSE_RESULT => $this->getResponseValue(),
+            GLOBAL_RESPONSE_CODE => $this->getCode(),
+            GLOBAL_RESPONSE_MSG => $this->getMsg(),
+        );
+
+        return $this->showView($response_array,$this->getTemplates());
+    }
 }
