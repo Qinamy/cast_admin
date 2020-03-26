@@ -7,12 +7,15 @@
         </tr>
         </thead>
         <tbody>
-                <tr ng-repeat="item in list">
+                <tr ng-repeat="item in list.data">
                     <td style="vertical-align: inherit">
                       @{{ item.mobile }}
                     </td>
                     <td style="vertical-align: inherit">
                         @{{ item.id }}
+                    </td>
+                    <td style="vertical-align: inherit" >
+                        <a href=""
                     </td>
                 </tr>
 

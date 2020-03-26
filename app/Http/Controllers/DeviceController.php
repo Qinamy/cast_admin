@@ -5,7 +5,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
-use App\Model\Device;
+use App\Models\Device;
+use Source;
 
 class DeviceController extends BaseController
 {
@@ -44,7 +45,12 @@ class DeviceController extends BaseController
     public function pageIndex(Request $request)
     {
         Log::notice('@@'.PHP_EOL.PHP_EOL.'index'.$request->input('mobile'));
-        $devices = Device::where('mobile',$request->input('mobile'))->get();
+//        $devices = Device::where('mobile',$request->input('mobile'))->get();
+//        $devices = DataSourceRepository::get('device')->index([
+        $devices = Source::get('device')->index([
+            'mobile' => $request->input('mobile'),
+            'dev_id' => $request->input('dev_id'),
+        ],100);
         $array_response = array(
             'list' => $devices
         );
