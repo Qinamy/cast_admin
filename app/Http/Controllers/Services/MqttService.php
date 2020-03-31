@@ -5,6 +5,9 @@ namespace App\Http\Controllers\Services;
 use App\Models\DeviceConf;
 use App\Models\DeviceLog;
 use App\Models\Device;
+use DB;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\Log;
 
 class MqttService
 {
@@ -63,5 +66,20 @@ class MqttService
             $str.=$key.'='.$value;
         }
         return md5($str);
+    }
+
+    public static function subscribe_log($topic,$message,$dev_id)
+    {
+
+        Log::notice('@@'.PHP_EOL.PHP_EOL.Carbon::now()->format('Y-m-d H:i:s'));
+
+        DB::table('subscribe_log')->insert([
+            'topic' => $topic,
+            'message' => $message,
+            'dev_id' => $dev_id,
+            'epoch' => time(),
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
+        ]);
     }
 }

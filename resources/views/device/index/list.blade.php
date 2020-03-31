@@ -4,6 +4,7 @@
         <tr>
             <th>账号</th>
             <th>设备号</th>
+            <th>详情</th>
         </tr>
         </thead>
         <tbody>
@@ -15,7 +16,11 @@
                         @{{ item.id }}
                     </td>
                     <td style="vertical-align: inherit" >
-                        <a href=""
+                        <a role="button"  aria-label="Left Align" class="btn-link"
+                           ng-click="clickDevice(item)"
+                           href="javascript:;">
+                            <span>详情</span>
+                        </a>
                     </td>
                 </tr>
 

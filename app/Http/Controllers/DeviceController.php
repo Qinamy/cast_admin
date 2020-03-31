@@ -3,10 +3,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\DeviceLog;
+use App\Models\SubscribeLog;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use App\Models\Device;
 use Source;
+use DB;
+use Carbon\Carbon;
 
 class DeviceController extends BaseController
 {
@@ -51,10 +55,26 @@ class DeviceController extends BaseController
             'mobile' => $request->input('mobile'),
             'dev_id' => $request->input('dev_id'),
         ],100);
+
         $array_response = array(
             'list' => $devices
         );
         $this->setResponseValue($array_response);
     }
 
+    public function pageShow(Request $request)
+    {
+
+
+        $list = Source::get('subscribelog')->index([],-1);
+
+        Log::notice('@@'.PHP_EOL.PHP_EOL.json_encode($list));
+
+        Log::notice('@@'.PHP_EOL.PHP_EOL.Carbon::now()->format('Y-m-d H:i:s'));
+
+        $array_response = array(
+            'list' => $list
+        );
+        $this->setResponseValue($array_response);
+    }
 }

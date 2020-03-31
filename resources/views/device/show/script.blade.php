@@ -3,13 +3,13 @@
 </script>
 <script src="{{asset('/js/ngnetwork.js')}}"></script>
 <script>
-    // var app = angular.module('kuailai',['ui.bootstrap']);
-
     var ngScope;
-    // app.controller('controller', function ($scope) {
     app.controller('controller', function ($scope, $network) {
-    // app.controller('controller', function ($scope, $network, $interval, $timeout) {
         ngScope = $scope;
+
+        $scope.list = {!! $list !!};
+
+        console.log($scope.list);
 
         $scope.filter_shops = typeof filter_shops == "undefined" ? null : filter_shops;
 

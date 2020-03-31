@@ -5,6 +5,7 @@
         <input type="text" name="mobile" class="form-control form-control-sm" ng-model="filter.mobile"/>
     </div>
 
+    <div class="col-md-1 text-right"><span>设备ID：</span></div>
     <div class="col-md-2">
         <input type="text" name="dev_id" class="form-control form-control-sm" ng-model="filter.dev_id"/>
     </div>

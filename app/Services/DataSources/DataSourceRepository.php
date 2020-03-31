@@ -21,6 +21,9 @@ class DataSourceRepository{
     public function device(){
         return APP::make('App\Services\DataSources\DeviceDataSource');
     }
+    public function subscribelog(){
+        return APP::make('App\Services\DataSources\SubscribeLogDataSource');
+    }
 
 
 }
