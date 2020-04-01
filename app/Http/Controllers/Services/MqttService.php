@@ -68,10 +68,13 @@ class MqttService
         return md5($str);
     }
 
-    public static function subscribe_log($topic,$message,$dev_id)
+    public static function subscribe_log($topic,$message)
     {
 
-        Log::notice('@@'.PHP_EOL.PHP_EOL.Carbon::now()->format('Y-m-d H:i:s'));
+        if($topic[strlen($topic)-1] == '/')
+            $topic = substr($topic,0,strlen($topic)-1);
+        $topic_arr = explode('/',$topic);
+        $dev_id = $topic_arr[count($topic_arr)-1];
 
         DB::table('subscribe_log')->insert([
             'topic' => $topic,

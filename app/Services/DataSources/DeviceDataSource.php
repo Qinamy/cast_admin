@@ -44,9 +44,9 @@ class DeviceDataSource extends BaseDataSource implements DataSourceInterface{
                 'prefix' => '%',
                 'suffix' => '%'
             ],
-            'dev_id' => [
+            'id' => [
                 'function' => 'where',
-                'arguments' => ['dev_id','like'],
+                'arguments' => ['id','like'],
                 'prefix' => '%',
                 'suffix' => '%'
             ],

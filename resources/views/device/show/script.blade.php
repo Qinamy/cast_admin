@@ -7,19 +7,22 @@
     app.controller('controller', function ($scope, $network) {
         ngScope = $scope;
 
-        $scope.list = {!! $list !!};
+        {{--$scope.list = {!! $list !!};--}}
 
-        console.log($scope.list);
+        {{--console.log($scope.list);--}}
 
-        $scope.filter_shops = typeof filter_shops == "undefined" ? null : filter_shops;
+        // $scope.filter_shops = typeof filter_shops == "undefined" ? null : filter_shops;
 
         $scope.filter = {
             page: 1,
-            date_range: 1,
-            mobile: null,
             dev_id: null,
-            filter_created_end: null,
+            topic: null,
         };
+
+        $scope.filter.dev_id = "{!! $dev_id !!}";
+
+        console.log($scope.filter.dev_id);
+
 
         $scope.isLoading = false;
 
@@ -46,7 +49,7 @@
 
             $scope.isLoading = true;
 
-            $network.post('../index/json', $scope.filter, function (data) {
+            $network.post('../show/json', $scope.filter, function (data) {
                 console.log(data);
                 $scope.isLoading = false;
                 if (data.code == 200) {
@@ -68,10 +71,8 @@
 
         }
 
-        $scope.clickDevice = function(item){
-            console.log(item);
-            window.open('../show/html?id=' + item.id);
-        };
+        getData();
+
 
     });
 </script>

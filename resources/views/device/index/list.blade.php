@@ -19,7 +19,7 @@
                         <a role="button"  aria-label="Left Align" class="btn-link"
                            ng-click="clickDevice(item)"
                            href="javascript:;">
-                            <span>详情</span>
+                            <span>订阅</span>
                         </a>
                     </td>
                 </tr>
@@ -28,5 +28,8 @@
     </table>
 </div>
 <div class="float-right">
-{{--    @include('admin.include.paginator')--}}
+    <div style="float:right" >
+        <ul uib-pagination total-items="list.total" ng-model="list.current_page" items-per-page="list.per_page" ng-change ="setPage()"
+            max-size="5" class="pagination-sm" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;" boundary-links="true" force-ellipses="true"></ul>
+    </div>
 </div>

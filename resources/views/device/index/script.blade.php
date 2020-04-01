@@ -17,14 +17,13 @@
             page: 1,
             date_range: 1,
             mobile: null,
-            dev_id: null,
+            id: null,
             filter_created_end: null,
         };
 
         $scope.isLoading = false;
 
         $scope.search = function(){
-            console.log('search');
             if($scope.isLoading){
                 return false;
             }
@@ -70,8 +69,10 @@
 
         $scope.clickDevice = function(item){
             console.log(item);
-            window.open('../show/html?id=' + item.id);
+            window.open('../showview/html?dev_id=' + item.id);
         };
 
+
+        $scope.search();
     });
 </script>

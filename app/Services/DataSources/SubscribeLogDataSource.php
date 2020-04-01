@@ -50,6 +50,14 @@ class SubscribeLogDataSource extends BaseDataSource implements DataSourceInterfa
                 'prefix' => '%',
                 'suffix' => '%'
             ],
+            'topic' => [
+                'function' => 'where',
+                'arguments' => ['topic','like'],
+                'prefix' => '%',
+                'suffix' => '%'
+            ],
+
+
             'shop_id' => [
                 'function' => 'where',
                 'arguments' => ['href','like'],

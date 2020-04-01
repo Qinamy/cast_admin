@@ -53,7 +53,7 @@ class DeviceController extends BaseController
 //        $devices = DataSourceRepository::get('device')->index([
         $devices = Source::get('device')->index([
             'mobile' => $request->input('mobile'),
-            'dev_id' => $request->input('dev_id'),
+            'id' => $request->input('id'),
         ],100);
 
         $array_response = array(
@@ -62,16 +62,38 @@ class DeviceController extends BaseController
         $this->setResponseValue($array_response);
     }
 
+    public function pageShowView(Request $request){
+
+        if(empty($request->input('dev_id'))){
+            $array_response = array(
+                'msg' => '请重新进入该页面'
+            );
+            $this->setResponseValue($array_response);
+            return ;
+        }
+
+        $array_response = array(
+            'dev_id' => $request->input('dev_id')
+        );
+        $this->setResponseValue($array_response);
+    }
+
     public function pageShow(Request $request)
     {
+        if(empty($request->input('dev_id'))){
+            $array_response = array(
+                'msg' => '请重新进入该页面'
+            );
+            $this->setResponseValue($array_response);
+            return ;
+        }
 
-
-        $list = Source::get('subscribelog')->index([],-1);
+        $list = Source::get('subscribelog')->index([
+            'topic' => $request->input('topic'),
+            'dev_id' => $request->input('dev_id')
+        ],20);
 
         Log::notice('@@'.PHP_EOL.PHP_EOL.json_encode($list));
-
-        Log::notice('@@'.PHP_EOL.PHP_EOL.Carbon::now()->format('Y-m-d H:i:s'));
-
         $array_response = array(
             'list' => $list
         );
